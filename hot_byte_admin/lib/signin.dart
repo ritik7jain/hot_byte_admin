@@ -14,7 +14,7 @@ String userEmail;
   }
 
    Stream <Users> get user{
-     return _auth.idTokenChanges()
+     return _auth.authStateChanges()
      .map(_userFromFirebaseUser);
      //.map((FirebaseUser user)=> _userFromFirebaseUser(user));
    }
@@ -45,6 +45,13 @@ Future registerWithEmailPassword(String email, String password) async {
   }
 
   }
+  on FirebaseAuthException catch (e) {
+  if (e.code == 'weak-password') {
+    print('The password provided is too weak.');
+  } else if (e.code == 'email-already-in-use') {
+    print('The account already exists for that email.');
+  }
+}
   catch(e){
     print(e.toString());
     return null;
@@ -82,6 +89,13 @@ try{
   }
 
 
+}
+on FirebaseAuthException catch (e) {
+  if (e.code == 'user-not-found') {
+    print('No user found for that email.');
+  } else if (e.code == 'wrong-password') {
+    print('Wrong password provided for that user.');
+  }
 }
 catch(e){
   print(e.toString());
