@@ -37,6 +37,7 @@ class _LoadingState extends State<Loadings> {
 
   Widget build(BuildContext context) {
     return Container(
+
       color: Colors.red,
     );
   }
