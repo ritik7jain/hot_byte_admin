@@ -30,7 +30,7 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   final AuthService _auth = AuthService();
-    final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
   String error = '';
@@ -54,78 +54,83 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     Image.asset(
                       'assets/logo1.png',
                       height: 100,
-                    ),Form(
-                                key: _formKey,
-                                child: Column(
-                                  children: <Widget>[
-                                    SizedBox(height: 20.0),
-                                    TextFormField(
-                                      validator: (val) =>
-                                          val.isEmpty ? ' Enter an email' : null,
-                                      decoration: TextInputDecoration.copyWith(
-                                          hintText: "Email"),
-                                      onChanged: (val) {
-                                        setState(() => email = val);
-                                      },
-                                    ),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    TextFormField(
-                                      validator: (val) => val.length < 6
-                                          ? ' Enter a password longer than 6 character'
-                                          : null,
-                                      decoration: TextInputDecoration.copyWith(
-                                          hintText: "Password"),
-                                      obscureText: true,
-                                      onChanged: (val) {
-                                        setState(() => password = val);
-                                      },
-                                    ),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.fromLTRB(0, 0, 200, 0),
-                                      child: RaisedButton(
-                                        color: Colors.yellow[700],
-                                        child: Text(
-                                          "Register",
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18,
-                                          ),
-                                        ),
-                                        onPressed: () async {
-                                          if (_formKey.currentState.validate()) {
-                                            setState(() => loading = true);
-                                            dynamic result = await _auth
-                                                .registerWithEmailPassword(
-                                                    email, password);
-                                            if (result == null) {
-                                              setState(() {
-                                                error =
-                                                    "Please enter correct email";
-                                                loading = false;
-                                              });
-                                            }
-                                          }
-                                        },
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      error,
-                                      style: TextStyle(
-                                          color: Colors.red, fontSize: 14.0),
-                                    )
-                                  ],
-                                ),
-                              ),
+                    ),
+                    Container(
+                    
+                      width: 300,
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(height: 20.0),
+                            TextFormField(
+                              validator: (val) =>
+                                  val.isEmpty ? ' Enter an email' : null,
+                              decoration: TextInputDecoration.copyWith(
+                                  hintText: "Email"),
+                              onChanged: (val) {
+                                setState(() => email = val);
+                              },
+                            ),
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            TextFormField(
+                              validator: (val) => val.length < 6
+                                  ? ' Enter a password longer than 6 character'
+                                  : null,
+                              decoration: TextInputDecoration.copyWith(
+                                  hintText: "Password"),
+                              obscureText: true,
+                              onChanged: (val) {
+                                setState(() => password = val);
+                              },
+                            ),
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            // Padding(
+                            //   padding:
+                            //       const EdgeInsets.fromLTRB(0, 0, 200, 0),
+                            //   child: RaisedButton(
+                            //     color: Colors.yellow[700],
+                            //     child: Text(
+                            //       "Register",
+                            //       style: TextStyle(
+                            //         color: Colors.black,
+                            //         fontWeight: FontWeight.bold,
+                            //         fontSize: 18,
+                            //       ),
+                            //     ),
+                            //     onPressed: () async {
+                            //       if (_formKey.currentState.validate()) {
+                            //         setState(() => loading = true);
+                            //         dynamic result = await _auth
+                            //             .registerWithEmailPassword(
+                            //                 email, password);
+                            //         if (result == null) {
+                            //           setState(() {
+                            //             error =
+                            //                 "Please enter correct email";
+                            //             loading = false;
+                            //           });
+                            //         }
+                            //       }
+                            //     },
+                            //   ),
+                            //),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              error,
+                              style:
+                                  TextStyle(color: Colors.red, fontSize: 14.0),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                     // Padding(
                     //   padding: EdgeInsets.only(top: 20),
                     //   child: Container(
@@ -174,30 +179,42 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     //     ),
                     //   ),
                     // ),
-                    // Padding(
-                    //   padding: EdgeInsets.only(top: 10),
-                    //   child: Container(
-                    //     height: 50,
-                    //     width: 200,
-                    //     decoration: BoxDecoration(
-                    //         border: Border.all(
-                    //             width: 1, color: Colors.lightBlue[100]),
-                    //         borderRadius: BorderRadius.circular(32),
-                    //         color: Colors.lightBlue[100]),
-                    //     child: RaisedButton(
-                    //       color: Colors.redAccent[100],
-                    //       child: Text(
-                    //         "Login",
-                    //         style: TextStyle(
-                    //           color: Colors.white,
-                    //           fontWeight: FontWeight.bold,
-                    //           fontSize: 27,
-                    //         ),
-                    //       ),
-                    //       onPressed: () {},
-                    //     ),
-                    //   ),
-                    // ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Container(
+                        height: 50,
+                        width: 200,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                width: 1, color: Colors.lightBlue[100]),
+                            borderRadius: BorderRadius.circular(32),
+                            color: Colors.lightBlue[100]),
+                        child: RaisedButton(
+                          color: Colors.redAccent[100],
+                          child: Text(
+                            "Login",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 27,
+                            ),
+                          ),
+                          onPressed: () async {
+                            if (_formKey.currentState.validate()) {
+                              setState(() => loading = true);
+                              dynamic result = await _auth
+                                  .registerWithEmailPassword(email, password);
+                              if (result == null) {
+                                setState(() {
+                                  error = "Please enter correct email";
+                                  loading = false;
+                                });
+                              }
+                            }
+                          },
+                        ),
+                      ),
+                    ),
                     Container(
                       width: MediaQuery.of(context).size.width,
                       child: Padding(
