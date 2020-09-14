@@ -5,6 +5,7 @@ import 'package:hot_byte_admin/wrapper.dart';
 import 'signin.dart';
 import 'package:provider/provider.dart';
 import 'user.dart';
+import 'ui.dart';
 
 class Loadings extends StatefulWidget {
   @override
@@ -20,7 +21,8 @@ class _LoadingState extends State<Loadings> {
           return StreamProvider<Users>.value(
       value: AuthService().user,
           child: MaterialApp(
-       home: Wrapper(),
+       //home: Wrapper(),
+       home: LoginScreen(),
       ),
     );
         },
