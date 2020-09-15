@@ -5,13 +5,20 @@ class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black,
-      child: 
-      Center(
-        child: SpinKitFadingGrid(
-          color: Colors.yellow[700],
+      color: Colors.white,
+      child: Column(
+        children:<Widget>[ 
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 600,
+            child:   Image(image: AssetImage('assets/hot_byte.jpg'),)
+          ),
+          
+          SpinKitChasingDots(
+          color: Colors.lightBlue[300],
           size: 50.0,
         ),
+        ],
       ),
       
     );
