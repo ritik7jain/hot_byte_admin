@@ -80,7 +80,7 @@ class _RegisterState extends State<Register> {
                                       ),
                                       Padding(
                                         padding: EdgeInsets.only(top: 10),
-                                        child: Container(
+                                        child: Container( 
                                           height: 50,
                                           width: 200,
                                           decoration: BoxDecoration(
@@ -150,7 +150,7 @@ class _RegisterState extends State<Register> {
                                       //   ),
                                       //),
                                       SizedBox(
-                                        height: 20,
+                                        height: 0,
                                       ),
                                       Text(
                                         error,
@@ -260,7 +260,7 @@ class _RegisterState extends State<Register> {
                                           child: Text(
                                             " Forgot password",
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: 17,
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.bold),
                                           ),
